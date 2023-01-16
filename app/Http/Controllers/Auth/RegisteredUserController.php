@@ -62,6 +62,8 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
             'gender' => $request->gender,
             'telContact' => $request->telContact,
+            'role_id'=>2,
+            'is_active'=>1
         ]);
         event(new Registered($user));
         Auth::login($user);

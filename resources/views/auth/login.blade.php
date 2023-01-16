@@ -21,7 +21,7 @@
                                     <!-- Pills content -->
                                     <div class="tab-content" id="pills-login" role="tabpanel"
                                          aria-labelledby="tab-login">
-                                        <form action="{{ route('login') }}" method="post">
+                                        <form action="{{ route('login') }}" method="post" id="formLogin">
                                             @csrf
                                             <div class="text-center mb-3">
                                                 <p>Sign in with:</p>
@@ -40,21 +40,18 @@
                                             <p class="text-center text-uppercase font-weight-bold">or:</p>
                                             <!-- Email input -->
                                             <div class="form-group">
-                                                <label for="loginName" class="label">{{__('Email')}}</label>
-                                                <input type="email" name="email" id="loginName" class="form-control"
-                                                       required autofocus>
-                                                @error('email')
-                                                <small class="text-danger">{{$message}}</small>
-                                                @enderror
+                                                <label for="loginEmail" class="label">{{__('Email')}}</label>
+                                                <input type="email" name="email" id="loginEmail" class="form-control"
+                                                       autofocus>
+                                                <small class="error-message text-danger">@error('email'){{$message}}@enderror</small>
                                             </div>
                                             <!-- Password input -->
                                             <div class="form-group">
                                                 <label for="loginPassword" class="label">{{__('Password')}}</label>
                                                 <input type="password" name="password" id="loginPassword"
-                                                       class="form-control" required
-                                                       autocomplete="current-password">
+                                                       class="form-control" autocomplete="current-password">
                                                 @error('password')
-                                                <small class="text-danger">{{$message}}</small>
+                                                <small class="error-message text-danger">{{$message}}</small>
                                                 @enderror
                                             </div>
                                             <!-- 2 column grid layout -->
@@ -101,3 +98,20 @@
 
 @endsection
 
+@section('script')
+    <!-- validation -->
+    <script type="text/javascript" src="{{asset('/assets/js/validation.js')}}"></script>
+    <script>
+        validator({
+            form: '#formLogin',
+            errorSelector: '.error-message',
+            rules: [
+                validator.isRequired('#loginEmail', 'Please enter email'),
+                validator.isEmail('#loginEmail', 'Please enter right format email  !!!'),
+                validator.isRequired('#loginPassword', 'Please enter password'),
+                validator.minLength('#password', 3),
+
+            ]
+        });
+    </script>
+@endsection

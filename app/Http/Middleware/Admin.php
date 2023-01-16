@@ -7,7 +7,6 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
 class Admin
 {
@@ -20,24 +19,10 @@ class Admin
      */
     public function handle(Request $request, Closure $next)
     {
-        if ( $this->isAdmin() ){
+        if (Auth::check() && Auth::user()->isAdmin()) {
             return $next($request);
-        }else{
-            return abort(403, "Unauthorized access! You haven't right to access this");
-        }
-
-    }
-
-    function isAdmin()
-    {
-        $role = DB::table('roles')
-            ->select('roles.*')
-            ->where('roles.id', '=', Auth::user()->role_id)
-            ->first();
-        if ($role->name == 'admin') {
-            return true;
         } else {
-            return false;
+            return abort(403, "Unauthorized access! You haven't right to access this");
         }
     }
 }

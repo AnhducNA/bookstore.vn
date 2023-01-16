@@ -21,7 +21,7 @@
                 </li>
                 @if(Auth::check())
                     <li class="nav-item px-2">
-                        <a href="#" class="nav-link">{{__('message.track_orders')}}</a>
+                        <a href="{{route('user.home')}}" class="nav-link">{{__('message.track_orders')}}</a>
                     </li>
                 @endif
 

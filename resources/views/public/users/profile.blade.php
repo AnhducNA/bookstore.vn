@@ -14,15 +14,15 @@
                     <div class="user-info">
                         <h5 class="my-3">{{Auth::user()->name}}</h5>
                         <p><i class="fas fa-envelope mr-2"></i> {{Auth::user()->email}}</p>
-                        <p><i class="fas fa-clock mr-2"></i> {{Auth::user()->created_at? Auth::user()->created_at->diffForHumans(): ''}} </p>
+                        <p><i class="fas fa-clock mr-2"></i> {{!empty(Auth::user()->created_at) ? Auth::user()->created_at->diffForHumans(): ''}} </p>
                     </div>
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="card card-body my-3">
                     <h6>Activities</h6>
-                    <p><a href="#" class="mr-2"><i class="fas fa-shopping-basket mr-1"></i> Orders</a> {{Auth::user()->orders? Auth::user()->orders->count(): 'No order yet'}}</p>
-                    <p><a href="#" class="mr-2"><i class="fas fa-comments mr-1"></i> Reviews</a> {{Auth::user()->reviews? Auth::user()->reviews->count(): 'No review yet'}}</p>
+                    <p><a href="{{route('user.orders')}}" class="mr-2"><i class="fas fa-shopping-basket mr-1"></i> Orders</a> {{Auth::user()->orders? Auth::user()->orders->count(): 'No order yet'}}</p>
+                    <p><a href="{{route('user.reviews')}}" class="mr-2"><i class="fas fa-comments mr-1"></i> Reviews</a> {{Auth::user()->reviews? Auth::user()->reviews->count(): 'No review yet'}}</p>
                 </div>
             </div>
         </div>

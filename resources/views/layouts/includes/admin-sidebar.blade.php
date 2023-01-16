@@ -55,7 +55,7 @@
     </li>
 
     <!-- Divider -->
-    <hr class="sidebar-divider">
+    <hr class="sidebar-divider my-0">
 
     <!-- Heading -->
     <div class="sidebar-heading">
@@ -63,7 +63,7 @@
     </div>
 
     <li class="nav-item">
-        <a class="nav-link" href="">
+        <a class="nav-link" href="{{route('orders.index')}}">
             <i class="fas fa-fw fa-shopping-basket"></i>
             <span>Orders</span></a>
     </li>

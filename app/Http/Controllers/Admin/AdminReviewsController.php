@@ -3,12 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Review;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Illuminate\Support\Facades\DB;
 
 class AdminReviewsController extends Controller
 {
@@ -19,8 +20,10 @@ class AdminReviewsController extends Controller
      */
     public function index()
     {
-        $reviews = DB::table('reviews')
-            ->leftJoin('users', 'users.id', '=', 'reviews.user_id')->orderBy('id', 'DESC')->get();
+//        $reviews = DB::table('reviews')
+//            ->leftJoin('users', 'users.id', '=', 'reviews.user_id')->orderBy('reviews.id', 'DESC')->get();
+        $reviews = Review::orderBy('id', 'DESC')->get();
+//        dd($reviews[0]->user->name);
         return view('admin.reviews.all-reviews', compact('reviews'));
     }
 
@@ -83,10 +86,13 @@ class AdminReviewsController extends Controller
      * Remove the specified resource from storage.
      *
      * @param int $id
-     * @return Response
+     * @return RedirectResponse
      */
     public function destroy($id)
     {
-        //
+        $review = Review::findOrFail($id);
+        $review->delete();
+        return redirect()->back()
+            ->with('alert_message', 'Review deleted successfully');
     }
 }

@@ -23,6 +23,7 @@ class User extends Authenticatable
         'password',
         'gender',
         'telContact',
+        'is_active',
         'role_id',
         'image_id',
         'created_at',
@@ -35,8 +36,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
-        'password',
-        'remember_token',
+        'password', 'remember_token',
     ];
 
     /**
@@ -47,4 +47,45 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function role()
+    {
+        return $this->belongsTo('App\Models\Role');
+    }
+    public function image()
+    {
+        return $this->belongsTo('App\Models\Image');
+    }
+    public function orders()
+    {
+        return $this->hasMany('App\Models\Order');
+    }
+    public function reviews()
+    {
+        return $this->hasMany('App\Models\Review');
+    }
+
+    public function isAdmin()
+    {
+        if($this->role->name == 'admin'  && $this->is_active == 1)
+        {
+            return true;
+        } else{
+            return false;
+        }
+    }
+
+    /*
+     * Users Authentication
+     */
+    public function isUser()
+    {
+        if ($this->role->name == 'user' && $this->is_active == 1)
+        {
+            return true;
+        }else{
+            return false;
+        }
+    }
+
 }

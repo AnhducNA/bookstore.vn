@@ -1,3 +1,5 @@
+@php use Illuminate\Support\Str; @endphp
+@php use Carbon\Carbon; @endphp
 @extends('layouts.admin-master')
 
 @section('content')
@@ -54,14 +56,17 @@
                                         <form action="{{route('reviews.destroy', $review->id)}}">
                                             @csrf
                                             @method('delete')
-                                            <button class="btn btn-danger btn-sm" type="submit"><i class="fas fa-times"></i></button>
+                                            <button class="btn btn-danger btn-sm" type="submit"><i
+                                                    class="fas fa-times"></i></button>
                                         </form>
                                     </td>
                                     <td>{{$review->id}}</td>
-                                    <td>{{$review->user->name}}</td>
-                                    <td><img src="{{$review->book->image_url}}" width="60" alt=""></td>
-                                    <td>{{str_limit($review->body, 200)}}</td>
-                                    <td>{{$review->created_at->diffForHumans()}}</td>
+                                    <td>
+                                        <?php echo !empty($review->user->name)? ($review->user->name) : 'username'?>
+                                    </td>
+                                    <td><img src="{{asset('')}}" width="60" alt=""></td>
+                                    <td>{{Str::limit($review->body, 200)}}</td>
+                                    <td>{{Carbon::parse($review->created_at)->diffForHumans()}}</td>
                                 </tr>
                             @endforeach
                             </tbody>

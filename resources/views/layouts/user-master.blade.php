@@ -71,7 +71,7 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="headings">
-                    <h3><a href="{{route('bookshop.home')}}" class="text-secondary"><b class="text-danger">Book</b> Shop</a></h3>
+                    <h3><a href="{{route('user.home')}}" class="text-secondary"><b class="text-danger">Book</b> Shop</a></h3>
                 </div>
             </div>
             <div class="col-md-4">
@@ -81,8 +81,8 @@
                             <a class="nav-link text-danger" href="#" data-toggle="dropdown"><i class="fas fa-cog"></i> Your
                                 activities</a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">Reviews</a>
-                                <a class="dropdown-item" href="#">Orders</a>
+                                <a class="dropdown-item" href="{{route('user.reviews')}}">Reviews</a>
+                                <a class="dropdown-item" href="{{route('user.orders')}}">Orders</a>
                             </div>
                         </li>
                     </ul>

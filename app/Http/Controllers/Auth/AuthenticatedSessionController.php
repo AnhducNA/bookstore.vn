@@ -41,10 +41,10 @@ class AuthenticatedSessionController extends Controller
                 return redirect('admin/home');
                 break;
             case  2:
-                return redirect('');
+                return redirect('user/home');
                 break;
             case 3:
-                return redirect('user/home');
+                return redirect('/');
                 break;
             default:
                 return redirect('login');
