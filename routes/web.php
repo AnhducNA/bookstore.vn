@@ -109,7 +109,7 @@ Route::group(['middleware' => 'user'], function () {
     Route::get('/my-orders', [UserOrdersController::class, 'myOrders'])->name('user.orders');
     Route::get('/order/details/{id}', [UserOrdersController::class, 'order_details'])->name('order.details');
     Route::get('/my-reviews', [UserReviewsController::class, 'myReviews'])->name('user.reviews');
-    Route::delete('/review-delete/{id}', [UserReviewsController::class, 'deleteReview'])->name('review.delete');
+    Route::get('/review-delete/{id}', [UserReviewsController::class, 'deleteReview'])->name('review.delete');
 
 });
 

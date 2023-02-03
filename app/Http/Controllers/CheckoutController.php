@@ -2,10 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
+use App\Models\Order;
+use App\Models\OrderDetail;
+use App\Models\ShippingAddress;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use Stripe\Charge;
+use Stripe\Stripe;
 
 class CheckoutController extends Controller
 {
@@ -45,6 +51,7 @@ class CheckoutController extends Controller
 //        end $shipping_address
 
         $cart = Session::get('cart');
+//        dd($cart);
         if (!empty($cart)) {
             return view('public.payment', compact('shipping_address', 'cart'));
         } else {
@@ -84,21 +91,41 @@ class CheckoutController extends Controller
 
     public function pay(Request $request)
     {
-//        $shipping_address[] = explode('+', $request->input('shipping_address'));
-//        dd($shipping_address);
-        if (Auth::check()) {
-        } else {
-            if ($request->input('btn-bankMethod')) {
-                dd($request->input('btn-bankMethod'));
-            } elseif ($request->input('btn-cashMethod')) {
-                DB::table('orders')
-                    ->insert();
-                dd($request->input('btn-cashMethod'));
-            } else {
-                dd($request->input());
-            }
-        }
-        return redirect('/')->with('success_message', 'ok');
+        Stripe::setApiKey('pk_test_TYooMQauvdEDq54NiTphI7jx');
+        $token = $request->stripeToken;
+        $total = $request->cart_total;
 
+        $order = new Order();
+        $user = Auth::user();
+
+        $shipping_address = ShippingAddress::where('user_id', $user->id)->latest()->first();
+        $order->user_id = $user->id;
+        $order->shipping_id = $shipping_address->id;
+        $order->total_price = $total;
+        $order->payment_type = 'card';
+        $order->save();
+        $order_id = $order->id;
+        $cart = Session::get('cart');
+//        dd($cart);
+        foreach ($cart['products'] as $key=> $cartItem) {
+            $orderDetails = new OrderDetail();
+
+            $orderDetails->order_id = $order_id;
+            $orderDetails->book_id = $cartItem['id'];
+            $orderDetails->book_name = $cartItem['name'];
+            $orderDetails->price = $cartItem['price'];
+            $orderDetails->book_quantity = $cartItem['quantity'];
+            $orderDetails->save();
+            Session::remove('cart')['products'][$key];
+
+//            Cart::remove($cartItem->rowId);
+
+            $remove_product = Book::findOrFail($orderDetails->book_id);
+            $remove_product->update([
+                'quantity' => $remove_product->quantity - $orderDetails->book_quantity,
+            ]);
+        }
+        return redirect()->route('user.orders')
+            ->with('success_message', 'Order placed successfully. Wait for confirmation.');
     }
 }

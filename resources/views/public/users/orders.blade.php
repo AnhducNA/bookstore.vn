@@ -21,7 +21,7 @@
            <tr>
                <td>{{$order->id}}</td>
                <td>{{$order->payment_type}}</td>
-               <td>&#8369;{{$order->total_price}}</td>
+               <td>{{number_format($order->total_price, 0)}} vnd</td>
                <td>
                    @if($order->order_status == 0)
                        <span class="text-danger">Pending</span>
