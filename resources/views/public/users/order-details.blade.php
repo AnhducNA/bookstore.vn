@@ -30,14 +30,14 @@
         <tr>
           <td>{{$order_detail->book_name}}</td>
           <td>{{$order_detail->book_quantity}}</td>
-          <td>&#8369;{{$order_detail->price}}</td>
-          <td>&#8369;{{$order_detail->price * $order_detail->book_quantity}}</td>
+          <td>{{number_format($order_detail->price)}} VND</td>
+          <td>{{number_format($order_detail->price * $order_detail->book_quantity)}} VND</td>
         </tr>
         @endforeach
         <tr>
             <td colspan="2"></td>
             <td><strong>Total</strong></td>
-            <td><strong>&#8369;{{$order->total_price}}</strong></td>
+            <td><strong>{{number_format($order->total_price)}} VND</strong></td>
         </tr>
         </tbody>
         </table>
