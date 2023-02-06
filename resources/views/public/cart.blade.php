@@ -62,8 +62,8 @@
                                 <a href="{{route('cart.deleteAll')}}" class="btn btn-outline-danger">Delete All</a>
                             </td>
                             <td colspan="1">
-                                <a href="{{route('cart.update')}}" onclick="changeAllListCart()"
-                                   class="btn btn-outline-warning btn-sm">Update</a>
+{{--                                <a href="{{route('cart.update')}}" onclick="changeAllListCart()"--}}
+{{--                                   class="btn btn-outline-warning btn-sm">Update</a>--}}
                             </td>
                             <td colspan="2">
                                 <a href="{{route('checkout')}}" class="btn btn-outline-primary btn-sm">Checkout
