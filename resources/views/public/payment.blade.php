@@ -33,7 +33,7 @@
                 </form>
             </div>
             <div class="bg-light p-3 my-4">
-                <button class="btn btn-success btn-sm"><strong>Cash on delivery</strong></button>
+                <a class="btn btn-success btn-sm" href="{{url('/')}}"><strong>Cash on delivery</strong></a>
             </div>
         </div>
     </div>

@@ -59,8 +59,8 @@
                         </div>
                     </div>
                     <div>
-                        <div class="small text-gray-500">December 12, 2019</div>
-                        <span class="font-weight-bold">A new monthly report is ready to download!</span>
+                        <div class="small text-gray-500">December 12, 2022</div>
+                        <span class="font-weight-bold">Một đơn hàng mới đang được gửi</span>
                     </div>
                 </a>
                 <a class="dropdown-item d-flex align-items-center" href="#">
@@ -70,8 +70,8 @@
                         </div>
                     </div>
                     <div>
-                        <div class="small text-gray-500">December 7, 2019</div>
-                        $290.29 has been deposited into your account!
+                        <div class="small text-gray-500">December 7, 2022</div>
+                        Thu nhập 250,000 vnd
                     </div>
                 </a>
                 <a class="dropdown-item d-flex align-items-center" href="#">
@@ -81,8 +81,8 @@
                         </div>
                     </div>
                     <div>
-                        <div class="small text-gray-500">December 2, 2019</div>
-                        Spending Alert: We've noticed unusually high spending for your account.
+                        <div class="small text-gray-500">December 2, 2022</div>
+                        5 đơn hàng đang chờ xác nhận
                     </div>
                 </a>
                 <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
@@ -107,8 +107,8 @@
                         <div class="status-indicator bg-success"></div>
                     </div>
                     <div class="font-weight-bold">
-                        <div class="text-truncate">Hi there! I am wondering if you can help me with a problem I've been having.</div>
-                        <div class="small text-gray-500">Emily Fowler · 58m</div>
+                        <div class="text-truncate">Xin chào, bạn có tin nhắn mới </div>
+                        <div class="small text-gray-500">Lê Anh Đức · 58m</div>
                     </div>
                 </a>
                 <a class="dropdown-item d-flex align-items-center" href="#">
@@ -117,8 +117,8 @@
                         <div class="status-indicator"></div>
                     </div>
                     <div>
-                        <div class="text-truncate">I have the photos that you ordered last month, how would you like them sent to you?</div>
-                        <div class="small text-gray-500">Jae Chun · 1d</div>
+                        <div class="text-truncate">Có đơn hàng mới ?</div>
+                        <div class="small text-gray-500">Phương Linh · 1d</div>
                     </div>
                 </a>
                 <a class="dropdown-item d-flex align-items-center" href="#">
@@ -127,20 +127,11 @@
                         <div class="status-indicator bg-warning"></div>
                     </div>
                     <div>
-                        <div class="text-truncate">Last month's report looks great, I am very happy with the progress so far, keep up the good work!</div>
-                        <div class="small text-gray-500">Morgan Alvarez · 2d</div>
+                        <div class="text-truncate">Khuyến mãi!</div>
+                        <div class="small text-gray-500">Bookstore · 2d</div>
                     </div>
                 </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                    <div class="dropdown-list-image mr-3">
-                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="">
-                        <div class="status-indicator bg-success"></div>
-                    </div>
-                    <div>
-                        <div class="text-truncate">Am I a good boy? The reason I ask is because someone told me that people say this to all dogs, even if they aren't good...</div>
-                        <div class="small text-gray-500">Chicken the Dog · 2w</div>
-                    </div>
-                </a>
+
                 <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
             </div>
         </li>
